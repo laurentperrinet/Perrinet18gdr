@@ -28,6 +28,7 @@
 \usepackage{multicol} % This is so we can have multiple columns of text side-by-side
 \columnsep=100pt % This is the amount of white space between the columns in the poster
 \columnseprule=0pt % This is the thickness of the black line between the columns in the poster
+\usepackage{url}
 
 \usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
 
@@ -113,26 +114,29 @@ the content
 
 
 
-\begin{multicols}{3} % This is how many columns your 
 \section*{Quantitative performance}
 
 \color{Navy} % SaddleBrown color for the conclusions to make them stand out
-\includegraphics[width=.05\linewidth]{accuracy_size.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_fullsize.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_crop.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_mean.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_std.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_conv1_kernel_size.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_conv1_dim.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_conv2_kernel_size.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_conv2_dim.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_stride1.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_stride2.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_dimension.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_lr.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_momentum.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_batch_size.pdf} 
-\includegraphics[width=.05\linewidth]{accuracy_epochs.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_size.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_fullsize.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_crop.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_mean.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_std.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_conv1_kernel_size.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_conv1_dim.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_conv2_kernel_size.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_conv2_dim.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_stride1.pdf} 
+%\includegraphics[width=.0666\linewidth]{accuracy_stride2.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_dimension.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_lr.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_momentum.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_batch_size.pdf} 
+\includegraphics[width=.0666\linewidth]{accuracy_epochs.pdf} 
+
+
+\begin{multicols}{3} % This is how many columns your 
+
 \section*{Conclusions}
 
 
@@ -144,9 +148,8 @@ the content
 \includegraphics[width=1.\linewidth]{GitQR.png}
 \end{minipage}\hfil
 \begin{minipage}{0.67\linewidth}
-The model and data are open-source. You can either flash the code or go to www.github.com/hugoladret/InternshipM1 to get them.
+The model and data are open-source. You can either flash the code or go to \url{https://invibe.net/LaurentPerrinet/Publications/Perrinet18gdr}
 \end{minipage}
-
  %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
