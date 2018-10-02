@@ -88,24 +88,21 @@ Recording eye movements is a technique that attracts an increasing number of sci
 %----------------------------------------------------------------------------------------
 \color{Black} % SaddleBrown color for the introduction
 \section*{Introduction}
-
-We investigated the performances of a novel computational model in comparison to humans in a orientation discrimination task. As a common frame of testing, we used \textbf{MotionClouds}~\citep{Sanz12} : random textures with natural-like stimulation, for which orientation $\theta$ and noise $B_\theta$ are controlled :
-\includegraphics[width=1.\linewidth]{Fig_intro_MC1.pdf}
-\includegraphics[width=1.\linewidth]{Fig_intro_MC2.pdf}
-\captionof{figure}{\color{Green} MotionClouds are oriented stimulus made of Von-Mises distributions. The bandwidth, $B_\theta$ controls the noise of the stimulus and $\theta$ controls its orientation. Can you guess the orientation for bandwidths of the lower row ?}
+\includegraphics[width=1.\linewidth]{dataset.pdf}
+\captionof{figure}{\color{Green} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
 %\end{center}%\vspace{1cm}
 %----------------------------------------------------------------------------------------
 %	Partie ring model
 \color{Black} % DarkSlateGray color for the rest of the content
-\section*{Ring Model} %ignore the error, they're from my \Inn fonction that works for maths zones
+\section*{Recognition model} %ignore the error, they're from my \Inn fonction that works for maths zones
 % Notebook partie A
 %----------------------------------------------------------------------------------------
 
-Our model was trained on 3800 MotionClouds, with $\theta$ in 16 discrete classes  $ \in [ 0; \pi ]$ and  $B_\theta$ continuous  $\in [1; 15^\circ]$. Accuracy was tested on 570 similar stimulus.
+Our model was trained on more than 1000 images taken from a webcam. Accuracy was tested on 20 cross-validations.
 
 %\begin{center}\vspace{1cm}
-\includegraphics[width=1\linewidth]{Fig_ring_model.pdf}
-\captionof{figure}{\color{Green} The Deep Recurrent Ring Model. Following~\citep{Hansel12}, cortical columns are modeled by \textbf{convolutional neural networks} (outer and inner layer) and lateral connectivity is established using a \textbf{bidirectional LSTM network} (median layer)~\citep{Hochreiter1997}.}
+\includegraphics[width=1\linewidth]{CNN.pdf}
+\captionof{figure}{\color{Green} The architecture of the original convolutional neural network, as introduced by LeCun et al. (1989), alternates between convolutional layers including rectifying non-linearities and max-pooling layers layers. The feature maps of the final subsampling layer are then fed into two layers of fully connected neurons. The output layer uses softmax activation functions to generate a decision. }
 
 %\end{center}%\vspace{1cm}
 %----------------------------------------------------------------------------------------
