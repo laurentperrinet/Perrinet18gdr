@@ -27,7 +27,7 @@
 
 \usepackage{multicol} % This is so we can have multiple columns of text side-by-side
 \columnsep=100pt % This is the amount of white space between the columns in the poster
-\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+\columnseprule=0pt % This is the thickness of the black line between the columns in the poster
 
 \usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
 
@@ -87,90 +87,44 @@ Recording eye movements is a technique that attracts an increasing number of sci
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 \color{Black} % SaddleBrown color for the introduction
-\section*{Introduction}
+\section*{Why another eye tracker?}
 \includegraphics[width=1.\linewidth]{dataset.pdf}
-\captionof{figure}{\color{Green} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
+%\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
 %\end{center}%\vspace{1cm}
-%----------------------------------------------------------------------------------------
-%	Partie ring model
-\color{Black} % DarkSlateGray color for the rest of the content
-\section*{Recognition model} %ignore the error, they're from my \Inn fonction that works for maths zones
-% Notebook partie A
+
+\includegraphics[width=1.\linewidth]{accuracy.pdf}
+\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
 %----------------------------------------------------------------------------------------
 
-Our model was trained on more than 1000 images taken from a webcam. Accuracy was tested on 20 cross-validations.
 
-%\begin{center}\vspace{1cm}
+\end{multicols}
+
+
+\color{Black} % DarkSlateGray 
+\begin{minipage}{0.67\linewidth}
+the content
+\section*{Recognition model}
 \includegraphics[width=1\linewidth]{CNN.pdf}
-\captionof{figure}{\color{Green} The architecture of the original convolutional neural network, as introduced by LeCun et al. (1989), alternates between convolutional layers including rectifying non-linearities and max-pooling layers layers. The feature maps of the final subsampling layer are then fed into two layers of fully connected neurons. The output layer uses softmax activation functions to generate a decision. }
-
-%\end{center}%\vspace{1cm}
 %----------------------------------------------------------------------------------------
-%	GEOTHERMAL DATA
-%----------------------------------------------------------------------------------------
-\section*{Psychophysics Data}
-\subsection*{2AFC Task}
-For our 2-Alternative Forced Choice task (2AFC), subjects were shown two different MotionClouds in quick succession. The first $\theta$ was always 90$^\circ$ (vertical) and the second was randomly chosen to produce a left/right shift. Subjects then had 1000 ms to \textbf{guess the direction of this shift}.
-\begin{itemize}
-\item For each human trial, $B_\theta$ was randomly chosen out of 7 possibilities and 150 trials were performed.
-\item For each model trial, $B_\theta$ was randomly chosen out of 15 possibilities and 600 trials were performed.
-\end{itemize}
-
-\begin{center}\vspace{1.2cm}
-\includegraphics[width=1.\linewidth]{Figure_trial.pdf}
-\captionof{figure}{\color{Green} 2AFC task design. After a fixation time, subject were shown two stimulus before having to guess a shift, for a total of 2s per trial. n = 13.}
-\end{center}\vspace{1.2cm}
-
-\subsection*{Human vs Model performance}
-Accuracy for 2AFC task was best for $B_\theta$ $<$ 28$^\circ$ and underwent a \textbf{rapid, full collapse} for $B_\theta$ $>$ 51$^\circ$, both for humans and model runs. Model accuracy was slightly lower than humans' for all noise level.
-\begin{center}\vspace{1cm}
-\includegraphics[width=1.\linewidth, page=1]{mergedfigs.pdf}
-\includegraphics[width=1.\linewidth, page=2]{mergedfigs.pdf}
-\captionof{figure}{\color{Green} Logistic regressions for a randomly picked human subject (A) and Ring Model (B).  }
-\end{center}\vspace{1cm}
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+\captionof{figure}{\color{DarkSlateGray} The architecture of the original convolutional neural network, as introduced by LeCun et al. (1989), alternates between convolutional layers including rectifying non-linearities and max-pooling layers layers. The feature maps of the final subsampling layer are then fed into two layers of fully connected neurons. The output layer uses softmax activation functions to generate a decision. Our model was trained on more than 1000 images taken from a webcam. Accuracy was tested on 20 cross-validations.
+}
+\end{minipage}\hfil
 
 
-\subsection*{F1 scores}
-We subsequently compared F1 scores, whose distribution furthers our previous interpretation that our model is relevant in approximating human performance in this task.
-\\ We then set to investigate the role of lateral connectivity of the primary visual cortex using the model. \textbf{LSTM was deactivated}, leaving the cortical columns without any lateral information, causing a threefold lower F1 score for $B_\theta$ $>$ 40$^\circ$. 
-\begin{center}\vspace{1cm}
-\includegraphics[width=1.\linewidth, page=1]{F1_curve.pdf}
-\captionof{figure}{\color{Green} Quadratic logistic regressions for the same randomly picked human subject as Figure 4(A), Ring Model and a Ring Model with an inactive lateral connectivity.}
-\end{center}\vspace{1cm}
 
-%\captionof{figure}{\color{Green} Logistic regressions for the ring model. Accuracy is overall lower than humans but collapsed the same way for B$\theta$ $>$ 51$^\circ$. }
-
-
-%----------------------------------------------------------------------------------------
-%	CONCLUSIONS
-%----------------------------------------------------------------------------------------
+\begin{multicols}{3} % This is how many columns your 
+\section*{Quantitative performance}
 
 \color{Navy} % SaddleBrown color for the conclusions to make them stand out
 
 \section*{Conclusions}
-The visual cortex is canonically described as a group of cortical columns organized in a hierarchical network, whose entry level consists of oriented stimulus in the visual field~\citep{Hubel68}. \\
-In this network, the role of lateral connectivity between columns selective to different orientation has often been theorized to be an inhibitor network for neighbouring columns~\citep{BLAKEMORE1970} or a support for contour integration~\citep{Stettler2002}.\\
-Here, using a new deep-learning model, we showed that orientation discrimination of the primary visual cortex varies in an 'all or none' fashion past a certain threshold. Suppressing the lateral connectivity of this model resulted in a tremendous F1 loss only for higher $B_\theta$, hence our hypothesis that this lateral connectivity could also increase the robustness of the primary visual cortex to noisy inputs. 
+
+
 \color{Black} % Set the color back to DarkSlateGray for the rest of the content
 
-%----------------------------------------------------------------------------------------
-%	FORTHCOMING RESEARCH
-%----------------------------------------------------------------------------------------
-
-%\section*{Forthcoming Research}
-
-
-%----------------------------------------------------------------------------------------
-%	BONUS : Polar plots and QR Code
-%----------------------------------------------------------------------------------------
 \section*{Additional resources}
-\begin{minipage}{0.67\linewidth}
-Polar plots of the MotionClouds shown in the Introduction section.
-\end{minipage}
-\begin{minipage}{0.3\linewidth}
-\includegraphics[width=1\linewidth]{Polar_plot_MC1.pdf}
-\includegraphics[width=1\linewidth]{Polar_plot_MC2.pdf}
-\end{minipage}\hfil
 
 \begin{minipage}{0.3\linewidth}
 \includegraphics[width=1.\linewidth]{GitQR.png}
@@ -178,13 +132,15 @@ Polar plots of the MotionClouds shown in the Introduction section.
 \begin{minipage}{0.67\linewidth}
 The model and data are open-source. You can either flash the code or go to www.github.com/hugoladret/InternshipM1 to get them.
 \end{minipage}
+
  %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 %\nocite{*} % Print all references regardless of whether they were cited in the poster or not
 \bibliographystyle{plain} % Plain referencing style
-\bibliography{obv1} % Use the example bibliography file sample.bib
+\bibliography{Perrinet18gdr} % Use the example bibliography file sample.bib
 %----------------------------------------------------------------------------------------
 
 \end{multicols}
 \end{document}
+
