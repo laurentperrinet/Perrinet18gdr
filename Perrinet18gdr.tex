@@ -14,11 +14,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Perrinet18gdr
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-\newcommand{\Author}{Laurent U.~Perrinet$^1$}%
-\newcommand{\Address}{$^1$~Institut de Neurosciences de la Timone, CNRS / Aix-Marseille Universit\'e - Marseille, France}%
+\newcommand{\Author}{Laurent U.~Perrinet}%
+\newcommand{\Address}{Institut de Neurosciences de la Timone\\CNRS / Aix-Marseille Universit\'e - Marseille, France}%
 \newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\Title}{A low-cost, accessible eye tracking framework}%
 \newcommand{\Email}{laurent.perrinet@univ-amu.fr}%
@@ -68,8 +65,7 @@
 \includegraphics[width=10.5cm]{Logo_amu.png}\\
 \end{minipage}
 
-\vspace{1cm} % A bit of extra whitespace between the header and poster content
-
+\vspace{4cm} 
 %----------------------------------------------------------------------------------------
 
 \begin{multicols}{3} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
@@ -83,6 +79,7 @@
 \begin{abstract}
 Recording eye movements is a technique that attracts an increasing number of scientists, but also in the general public. Indeed, this allows to quantitatively measure a number of useful dimensions of perception and behavior in general. However, most existing trackers rely on expensive or technically complex solutions. Here, we propose a simple framework to record eye movements using any camera, such as a webcam. As a proof of concept, the recorded image is processed in real-time to detect from a simple sub-set of eye movements : left, center, right or blink. The processing is based on two stages. First, we use a pre-trained computer vision algorithm to extract the image of the face. Second, we used a classical deep-learning architecture to learn to classify these sub-images. This network is a 3 layered convolutional neural network, for which we optimized performance as measured by the accuracy with cross-validation on a wide range of the network's hyper-parameters. Over a dataset of more than 1000 images, this network achieves an average accuracy of approximately 97\%. We also provide with an integration with the psychopy library which shows that frames can be processed on a standard laptop at a rate of approximately 25Hz.
 \end{abstract}
+\includegraphics[width=1.\linewidth, height=.2\linewidth]{dataset.pdf}
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
@@ -90,55 +87,59 @@ Recording eye movements is a technique that attracts an increasing number of sci
 \color{Black} % SaddleBrown color for the introduction
 \section*{Why another eye tracker?}
 \includegraphics[width=1.\linewidth]{dataset.pdf}
-\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
+\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker. First, full scale images of the scene are capttured using the openCV library. Then we extract the bounding box around the face in that scene   }
 
 \includegraphics[width=1.\linewidth]{accuracy.pdf}
-\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker.}
+\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker. Accuracy was tested on 20 cross-validations.
+}
 %----------------------------------------------------------------------------------------
 
 
 \end{multicols}
 
+\vspace{4cm} 
 
 \color{Black} % DarkSlateGray 
 \begin{minipage}{0.67\linewidth}
 the content
-\section*{Recognition model}
+\section*{Recognition model: a classical convolutional neural network}
 \includegraphics[width=1\linewidth]{CNN.pdf}
 %----------------------------------------------------------------------------------------
 \end{minipage}
 \begin{minipage}{0.3\linewidth}
-\captionof{figure}{\color{DarkSlateGray} The architecture of the original convolutional neural network, as introduced by LeCun et al. (1989), alternates between convolutional layers including rectifying non-linearities and max-pooling layers layers. The feature maps of the final subsampling layer are then fed into two layers of fully connected neurons. The output layer uses softmax activation functions to generate a decision. Our model was trained on more than 1000 images taken from a webcam. Accuracy was tested on 20 cross-validations.
-}
+\captionof{figure}{\color{DarkSlateGray} The architecture of the original convolutional neural network, as introduced by~\citep{lecun1989backpropagation,lecun1998gradient}, alternates between convolutional layers including rectifying non-linearities and max-pooling layers layers. The feature maps of the final subsampling (striding) layer are then fed into two layers of fully connected neurons. The output layer uses softmax activation functions to generate a decision. Our model was trained on more than 1000 images taken from a standard desktop / laptop webcam. The implementation relies on the pytporch library~\citep{paszke2017automatic}, such that learning is performed in approximately $700$ seconds (GPU standalone server with a GeForce GTX 1060 Nvidia card) and that the forward pass takes approximately $2$ milliseconds. }
 \end{minipage}\hfil
 
 
+\vspace{4cm} 
 
-\section*{Quantitative performance}
+\section*{Quantitative performance over the set of free parameters}
 
 \color{Navy} % SaddleBrown color for the conclusions to make them stand out
-\includegraphics[width=.0666\linewidth]{accuracy_size.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_fullsize.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_crop.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_mean.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_std.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_conv1_kernel_size.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_conv1_dim.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_conv2_kernel_size.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_conv2_dim.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_stride1.pdf} 
-%\includegraphics[width=.0666\linewidth]{accuracy_stride2.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_dimension.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_lr.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_momentum.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_batch_size.pdf} 
-\includegraphics[width=.0666\linewidth]{accuracy_epochs.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_size.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_fullsize.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_crop.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_mean.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_std.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_conv1_kernel_size.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_conv1_dim.pdf} \\
+\includegraphics[width=.13333\linewidth]{accuracy_conv2_kernel_size.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_conv2_dim.pdf} 
+%\includegraphics[width=.13333\linewidth]{accuracy_stride1.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_stride2.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_dimension.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_lr.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_momentum.pdf} 
+%\includegraphics[width=.13333\linewidth]{accuracy_batch_size.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_epochs.pdf} 
 
+\vspace{4cm} 
 
 \begin{multicols}{3} % This is how many columns your 
+\color{Navy} % Navy color for the abstract
 
 \section*{Conclusions}
-
+We have shown here that a simple architecture could allow for a low-cost, accessible eye tracking framework with a high accuracy ($>97\%$). One drawback of this architecture is its low-precision (4 bit output). We envision that such an architecture could be used in a wide range of human machine interfaces (laptops, tablets, smartphones). Also, we have exploited each frame independently and we expect to be able to achieve a higher temporal accuracy when handling the input sequence dynamically by extendng the input to several frames.
 
 \color{Black} % Set the color back to DarkSlateGray for the rest of the content
 
@@ -150,14 +151,9 @@ the content
 \begin{minipage}{0.67\linewidth}
 The model and data are open-source. You can either flash the code or go to \url{https://invibe.net/LaurentPerrinet/Publications/Perrinet18gdr}
 \end{minipage}
- %----------------------------------------------------------------------------------------
-%	REFERENCES
-%----------------------------------------------------------------------------------------
-%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+
 \bibliographystyle{plain} % Plain referencing style
 \bibliography{Perrinet18gdr} % Use the example bibliography file sample.bib
-%----------------------------------------------------------------------------------------
-
+%--------------------------------------------------------------------------------
 \end{multicols}
 \end{document}
-
