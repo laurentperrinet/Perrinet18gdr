@@ -53,9 +53,9 @@
 
 \begin{minipage}[b]{0.75\linewidth}
 %\VeryHuge
-\Huge \color{Navy} \textbf{\Title} \color{Black}\\ % Title
+\Huge \color{Navy} \textbf{\Title} \color{Black}\\[0.9cm] % Title
 %\Huge\textit{Country Update}\\[2.4cm] % Subtitle
-\huge \textbf{\Author} \\[0.5cm] % Author(s)
+\huge \textbf{\Author} \\[0.9cm] % Author(s)
 \huge \Address\\[0.4cm] % University/organization
 \Large \texttt{\Email} \\
 \end{minipage}
@@ -65,7 +65,7 @@
 \includegraphics[width=10.5cm]{Logo_amu.png}\\
 \end{minipage}
 
-\vspace{4cm} 
+\vspace{2cm} 
 %----------------------------------------------------------------------------------------
 
 \begin{multicols}{3} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
@@ -77,20 +77,21 @@
 \color{Navy} % Navy color for the abstract
 
 \begin{abstract}
-Recording eye movements is a technique that attracts an increasing number of scientists, but also in the general public. Indeed, this allows to quantitatively measure a number of useful dimensions of perception and behavior in general. However, most existing trackers rely on expensive or technically complex solutions. Here, we propose a simple framework to record eye movements using any camera, such as a webcam. As a proof of concept, the recorded image is processed in real-time to detect from a simple sub-set of eye movements : left, center, right or blink. The processing is based on two stages. First, we use a pre-trained computer vision algorithm to extract the image of the face. Second, we used a classical deep-learning architecture to learn to classify these sub-images. This network is a 3 layered convolutional neural network, for which we optimized performance as measured by the accuracy with cross-validation on a wide range of the network's hyper-parameters. Over a dataset of more than 1000 images, this network achieves an average accuracy of approximately 97\%. We also provide with an integration with the psychopy library which shows that frames can be processed on a standard laptop at a rate of approximately 25Hz.
+Recording eye movements is a technique that attracts an increasing number of scientists, but also in the general public. Indeed, this allows to quantitatively measure a number of useful dimensions of perception and behavior in general. However, most existing trackers rely on expensive or technically complex solutions. Here, we propose a simple framework to record eye movements using any camera, such as a webcam. As a proof of concept, the recorded image is processed in real-time to detect from a simple sub-set of eye movements : left, center, right or blink. The processing is based on two stages. First, we use a pre-trained computer vision algorithm to extract the image of the face. Second, we used a classical deep-learning architecture to learn to classify these sub-images. This network is a $3$ layered convolutional neural network, for which we optimized performance as measured by the accuracy with cross-validation on a wide range of the network's hyper-parameters. Over a dataset of more than $1000$ images, this network achieves an average accuracy of approximately $97$\%. We also provide with an integration with the psychopy library which shows that frames can be processed on a standard laptop at a rate of approximately~$25$~Hz.
 \end{abstract}
-\includegraphics[width=1.\linewidth, height=.2\linewidth]{dataset.pdf}
+\includegraphics[width=1.\linewidth, height=.2\linewidth]{stimuli.png}
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 \color{Black} % SaddleBrown color for the introduction
+%\section*{LeCheapEyeTracker: low cost, low precision, high accuracy}
 \section*{Why another eye tracker?}
 \includegraphics[width=1.\linewidth]{dataset.pdf}
-\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker. First, full scale images of the scene are capttured using the openCV library. Then we extract the bounding box around the face in that scene   }
+\captionof{figure}{\color{DarkSlateGray} We investigated the performance of this novel, low-cost, low-precision eye tracker. First, we capture full scale images of the scene using the openCV library. , we extract the bounding box around the face in that scene using the DLib library~\citep{dlib09}. In the learning phase, we order the extracted images using 4 labels: `center', `left', `right' and `blink'. These labels are then used to supervise the learning of the association between the input image of the extracted image and the output label.}
 
 \includegraphics[width=1.\linewidth]{accuracy.pdf}
-\captionof{figure}{\color{DarkSlateGray} We investigated the performance of a novel, low-cost, low-precision eye tracker. Accuracy was tested on 20 cross-validations.
+\captionof{figure}{\color{DarkSlateGray} The learning was performed using the pytorch library~\citep{paszke2017automatic} over $20$ epochs. Accuracy was tested on 20 cross-validations.  Over a dataset of more than $1000$ images, this network achieves an average accuracy of approximately $97$\%.
 }
 %----------------------------------------------------------------------------------------
 
@@ -110,11 +111,13 @@ Recording eye movements is a technique that attracts an increasing number of sci
 \end{minipage}\hfil
 
 
-\vspace{4cm} 
+\vspace{3cm} 
 
 \section*{Quantitative performance over the set of free parameters}
+\vspace{2cm} 
 
-\color{Navy} % SaddleBrown color for the conclusions to make them stand out
+\begin{center}
+\begin{minipage}{.9334\linewidth}
 \includegraphics[width=.13333\linewidth]{accuracy_size.pdf} 
 \includegraphics[width=.13333\linewidth]{accuracy_fullsize.pdf} 
 \includegraphics[width=.13333\linewidth]{accuracy_crop.pdf} 
@@ -130,15 +133,17 @@ Recording eye movements is a technique that attracts an increasing number of sci
 \includegraphics[width=.13333\linewidth]{accuracy_lr.pdf} 
 \includegraphics[width=.13333\linewidth]{accuracy_momentum.pdf} 
 %\includegraphics[width=.13333\linewidth]{accuracy_batch_size.pdf} 
-\includegraphics[width=.13333\linewidth]{accuracy_epochs.pdf} 
+\includegraphics[width=.13333\linewidth]{accuracy_epochs.pdf}
+\end{minipage}
+\end{center}
 
-\vspace{4cm} 
+\vspace{2cm} 
 
 \begin{multicols}{3} % This is how many columns your 
 \color{Navy} % Navy color for the abstract
 
 \section*{Conclusions}
-We have shown here that a simple architecture could allow for a low-cost, accessible eye tracking framework with a high accuracy ($>97\%$). One drawback of this architecture is its low-precision (4 bit output). We envision that such an architecture could be used in a wide range of human machine interfaces (laptops, tablets, smartphones). Also, we have exploited each frame independently and we expect to be able to achieve a higher temporal accuracy when handling the input sequence dynamically by extendng the input to several frames.
+We have shown here that a simple architecture could allow for a low-cost, accessible eye tracking framework with a high accuracy ($>97\%$). One drawback of this architecture is its low-precision (4 bit output). This precision can certainly be improved by using more complex network architectures such as state-of-the art deep learning architectures. We envision that such a framework could be used in a wide range of human machine interfaces (laptops, tablets, smartphones). Also, we have exploited each frame independently and we expect to be able to achieve a higher temporal accuracy when handling the input sequence dynamically by extendng the input to several frames.
 
 \color{Black} % Set the color back to DarkSlateGray for the rest of the content
 
