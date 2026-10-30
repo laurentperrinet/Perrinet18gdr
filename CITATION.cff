@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the accompanying publication (preferred-citation below).
+type: software
+title: A low-cost, accessible eye tracking framework
+authors:
+- family-names: Perrinet
+  given-names: Laurent U
+  orcid: https://orcid.org/0000-0002-9536-010X
+repository-code: https://github.com/laurentperrinet/Perrinet18gdr
+url: https://laurentperrinet.github.io/publication/perrinet-18-gdr/
+keywords:
+- eye-movements
+- motion-perception
+- visual-illusions
+preferred-citation:
+  type: conference-paper
+  title: A low-cost, accessible eye tracking framework
+  authors:
+  - family-names: Perrinet
+    given-names: Laurent U
+    orcid: https://orcid.org/0000-0002-9536-010X
+  conference:
+    name: GDR Vision, Paris, 2018
+  year: 2018
+  url: https://laurentperrinet.github.io/publication/perrinet-18-gdr/
